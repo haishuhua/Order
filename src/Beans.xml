@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd ">
+
+   <!-- Initialization for data source -->
+   <bean id="dataSource" 
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="url" value="jdbc:sqlserver://10.208.121.234;DatabaseName=dev_data"/>
+      <property name="username" value="xiaoyic"/>
+      <property name="password" value="bd9ap2cu"/>
+   </bean>
+   
+   <!-- Definition for studentJDBCTemplate bean -->
+   <bean id="studentJDBCTemplate" 
+      class="com.tutorialspoint.StudentJDBCTemplate">
+      <property name="dataSource"  ref="dataSource" />    
+   </bean>
+   
+   <bean id="OrderJDBCTemplate" 
+      class="com.dao.OrderJDBCTemplate">
+      <property name="dataSource"  ref="dataSource" />    
+   </bean>
+
+</beans>
+
+ 
